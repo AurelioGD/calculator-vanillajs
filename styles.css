@@ -60,4 +60,5 @@ body{
 .button-key-equal{
     background-color: #ED802E;
     color: #FFFFFF;
+    grid-column: span 2;
 }
