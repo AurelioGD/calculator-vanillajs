@@ -1,5 +1,5 @@
 import { IDS_ELEMENTS_HTML } from "./consts.js"
-import { deleteLastCharacter } from "./utils.js"
+import { deleteLastCharacter, OPERATIONS } from "./utils.js"
 
 const $ = (selector) => document.querySelector(selector)
 
@@ -91,35 +91,16 @@ ZERO_KEY.addEventListener("click", (e) => drawNumberInDisplay(e.target.id))
 //Agregara caracter de punto al display
 POINT_KEY.addEventListener("click", (e) => drawNumberInDisplay(e.target.id))
 //Ejecuta la operacion del display y muestra el resultado en la misma display
-EQUAL_KEY.addEventListener("click", (e) => {
-    if(DISPLAY.textContent){
-        if(DISPLAY_OP.textContent === "/") {
-            DISPLAY_OP.textContent = ""
-            const NUMBER = parseFloat(DISPLAY.textContent)
-            const result = PRE_NUMBER / NUMBER
-            const valueToDisplay = Number.isInteger(result) ? result : result.toFixed(2)
-            DISPLAY.textContent = `${valueToDisplay}`
-        }
-        if(DISPLAY_OP.textContent === "x") {
-            DISPLAY_OP.textContent = ""
-            const NUMBER = parseFloat(DISPLAY.textContent)
-            const result = PRE_NUMBER * NUMBER
-            const valueToDisplay = Number.isInteger(result) ? result : result.toFixed(2)
 
-            DISPLAY.textContent = `${valueToDisplay}`
-        }
-        if(DISPLAY_OP.textContent === "-") {
-            DISPLAY_OP.textContent = ""
-            const NUMBER = parseFloat(DISPLAY.textContent)
-            const result = PRE_NUMBER - NUMBER
-            DISPLAY.textContent = `${result}`
-        }
-        if(DISPLAY_OP.textContent === "+") {
-            DISPLAY_OP.textContent = ""
-            const NUMBER = parseFloat(DISPLAY.textContent)
-            const result = PRE_NUMBER + NUMBER
-            DISPLAY.textContent = `${result}`
-        }
-    }
+const doTheOperation = (op) => {
+    DISPLAY_OP.textContent = ""
+    const NUMBER = parseFloat(DISPLAY.textContent)
+    const result = OPERATIONS[op](PRE_NUMBER, NUMBER)
+    const valueToDisplay = Number.isInteger(result) ? result : result.toFixed(2)
+    DISPLAY.textContent = `${valueToDisplay}`
+}
+
+EQUAL_KEY.addEventListener("click", () => {
+    if(DISPLAY.textContent) doTheOperation(DISPLAY_OP.textContent)
     console.log("EQUAL_KEY")
 })
