@@ -1,4 +1,5 @@
 import { IDS_ELEMENTS_HTML } from "./consts.js"
+import { deleteLastCharacter } from "./utils.js"
 
 const $ = (selector) => document.querySelector(selector)
 
@@ -38,7 +39,7 @@ AC_KEY.addEventListener("click", (e) => {
 })
 //Eliminara un caracter del lado derecho del display
 SUP_KEY.addEventListener("click", (e) => {
-    DISPLAY.textContent = DISPLAY.textContent.split("").slice(0, DISPLAY.textContent.length-1).join("")
+    DISPLAY.textContent = deleteLastCharacter(DISPLAY.textContent)
 })
 //Convertira en porcentaje el numero que este en el display
 PREC_KEY.addEventListener("click", (e) => {
@@ -51,15 +52,16 @@ const drawNumberInDisplay = (numberKey) => {
         DISPLAY.textContent += `${IDS_ELEMENTS_HTML[numberKey]}`
     }
 }
-//Agregara caracter de dividir al display
-DIVI_KEY.addEventListener("click", (e) => {
+const createAnOperationInProcess = (operationKey) => {
     if(DISPLAY.textContent){
         PRE_NUMBER = parseFloat(DISPLAY.textContent)
         DISPLAY.textContent = ""
-        DISPLAY_OP.textContent = "/"
-        console.log("DIVI_KEY")
+        DISPLAY_OP.textContent = IDS_ELEMENTS_HTML[operationKey]
+        console.log(operationKey)
     }
-})
+}
+//Agregara caracter de dividir al display
+DIVI_KEY.addEventListener("click", (e) => createAnOperationInProcess(e.target.id))
 //Agregar el numero 7 a la display
 SEVEN_KEY.addEventListener("click", (e) => drawNumberInDisplay(e.target.id))
 //Agregar el numero 8 a la display
@@ -67,14 +69,7 @@ EIGHT_KEY.addEventListener("click", (e) => drawNumberInDisplay(e.target.id))
 //Agregar el numero 9 a la display
 NINE_KEY.addEventListener("click", (e) => drawNumberInDisplay(e.target.id))
 //Agregara caracter de multiplicacion al display
-MULTY_KEY.addEventListener("click", (e) => {
-    if(DISPLAY.textContent){
-        PRE_NUMBER = parseFloat(DISPLAY.textContent)
-        DISPLAY.textContent = ""
-        DISPLAY_OP.textContent = "x"
-        console.log("MULTY_KEY")
-    }
-})
+MULTY_KEY.addEventListener("click", (e) => createAnOperationInProcess(e.target.id))
 //Agregar el numero 4 a la display
 FORD_KEY.addEventListener("click", (e) => drawNumberInDisplay(e.target.id))
 //Agregar el numero 5 a la display
@@ -82,14 +77,7 @@ FIVE_KEY.addEventListener("click", (e) => drawNumberInDisplay(e.target.id))
 //Agregar el numero 6 a la display
 SIX_KEY.addEventListener("click", (e) => drawNumberInDisplay(e.target.id))
 //Agregara caracter de resta al display
-REST_KEY.addEventListener("click", (e) => {
-    if(DISPLAY.textContent){
-        PRE_NUMBER = parseFloat(DISPLAY.textContent)
-        DISPLAY.textContent = ""
-        DISPLAY_OP.textContent = "-"
-        console.log("REST_KEY")
-    }
-})
+REST_KEY.addEventListener("click", (e) => createAnOperationInProcess(e.target.id))
 //Agregar el numero 1 a la display
 ONE_KEY.addEventListener("click", (e) => drawNumberInDisplay(e.target.id))
 //Agregar el numero 2 a la display
@@ -97,22 +85,11 @@ TWO_KEY.addEventListener("click", (e) => drawNumberInDisplay(e.target.id))
 //Agregar el numero 3 a la display
 THREE_KEY.addEventListener("click", (e) => drawNumberInDisplay(e.target.id))
 //Agregara caracter de resta al display
-ADD_KEY.addEventListener("click", (e) => {
-    if(DISPLAY.textContent){
-        PRE_NUMBER = parseFloat(DISPLAY.textContent)
-        DISPLAY.textContent = ""
-        DISPLAY_OP.textContent = "+"
-        console.log("ADD_KEY")
-    }
-})
+ADD_KEY.addEventListener("click", (e) => createAnOperationInProcess(e.target.id))
 //Agregar el numero 0 a la display
 ZERO_KEY.addEventListener("click", (e) => drawNumberInDisplay(e.target.id))
 //Agregara caracter de punto al display
-POINT_KEY.addEventListener("click", (e) => {
-    if(DISPLAY.textContent.length < 8){
-        DISPLAY.textContent += "."
-    }
-})
+POINT_KEY.addEventListener("click", (e) => drawNumberInDisplay(e.target.id))
 //Ejecuta la operacion del display y muestra el resultado en la misma display
 EQUAL_KEY.addEventListener("click", (e) => {
     if(DISPLAY.textContent){

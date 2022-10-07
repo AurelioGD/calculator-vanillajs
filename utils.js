@@ -1,0 +1,1 @@
+export const deleteLastCharacter = (string) => string.split("").slice(0, string.length-1).join("")

@@ -4,6 +4,7 @@ export const IDS_ELEMENTS_HTML = {
     "ac-key": "ac-key",
     "sup-key": "sup-key",
     "prec-key": "prec-key",
+    "divi-key": "/",
     "seven-key": "7",
     "eight-key": "8",
     "nine-key": "9",
