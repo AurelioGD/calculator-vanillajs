@@ -1,0 +1,63 @@
+:root{
+    --primary-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    --secondary-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --primary-font: 'Roboto', sans-serif;
+    --primary-font-color: #424242
+}
+body{
+    font-family: var(--primary-font);
+    background-image: radial-gradient(circle at 120.71% 50%, #ffd864 0, #fdc851 25%, #f2b53c 50%, #e7a225 75%, #df920c 100%);
+}
+.calculator-container{
+    position: relative;
+    top: 5rem;
+    width: 25rem;
+    height: 40rem;
+    margin: auto;
+    padding: 1rem;
+    box-shadow: var(--primary-shadow);
+    border-radius: 1rem;
+    background-color: #fafafa
+}
+.display{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    height: 20%;
+}
+.display-value{
+    width: max-content;
+    margin: 0 1rem 0 0;
+    font-size: 4rem;
+    color: var(--primary-font-color);
+}
+.display-op{
+    width: max-content;
+    margin: 0 1rem 0.8rem 0;
+    font-size: 1.2rem;
+    color: var(--primary-font-color);
+}
+.keyboard{
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+    height: 80%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.button-key{
+    background-color: #ffffff;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: var(--secondary-shadow);
+    font-size: 1.2rem;
+    color: var(--primary-font-color);
+}
+.button-key:hover{
+    cursor: pointer;
+}
+.button-key-equal{
+    background-color: #ED802E;
+    color: #FFFFFF;
+}
