@@ -44,6 +44,7 @@ SUP_KEY.addEventListener("click", (e) => {
 //Convertira en porcentaje el numero que este en el display
 PREC_KEY.addEventListener("click", (e) => {
     const NUMBER = parseFloat(DISPLAY.textContent)
+    if(!NUMBER) return
     const NEW_NUMBER = NUMBER / 100
     DISPLAY.textContent = `${NEW_NUMBER}`
 })
@@ -101,6 +102,6 @@ const doTheOperation = (op) => {
 }
 
 EQUAL_KEY.addEventListener("click", () => {
-    if(DISPLAY.textContent) doTheOperation(DISPLAY_OP.textContent)
+    if(DISPLAY.textContent && DISPLAY_OP.textContent) doTheOperation(DISPLAY_OP.textContent)
     console.log("EQUAL_KEY")
 })
