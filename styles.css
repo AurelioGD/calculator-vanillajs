@@ -16,7 +16,7 @@ body{
     margin: auto;
     padding: 1rem;
     box-shadow: var(--primary-shadow);
-    border-radius: 1rem;
+    border-radius: 2rem;
     background-color: #fafafa
 }
 .display{
