@@ -25,7 +25,7 @@ body{
     justify-content: flex-end;
     align-items: flex-end;
     width: 100%;
-    height: 20%;
+    height: 30%;
 }
 .display-value{
     width: max-content;
@@ -43,7 +43,7 @@ body{
     display: grid;
     gap: 1rem;
     width: 100%;
-    height: 80%;
+    height: 70%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .button-key{
@@ -61,4 +61,7 @@ body{
     background-color: #ED802E;
     color: #FFFFFF;
     grid-column: span 2;
+}
+.sup-key-icon{
+    width: 1.2rem;
 }
